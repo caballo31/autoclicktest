@@ -2,9 +2,10 @@ name: Compile Android APK
 
 on:
   push:
-    branches: [ "master" ] # Cambia esto si tu rama principal se llama diferente
+    branches: [ "main" ]    # Se activa al subir cambios a main
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]    # Se activa en PRs a main
+  workflow_dispatch:        # <--- ESTO activa el botón "Run workflow" manual
 
 jobs:
   build:
@@ -30,4 +31,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: SmartAutoClicker-Debug-APK
-          path: smartautoclicker/build/outputs/apk/fDroid/debug/*.apk
+          path: "**/build/outputs/apk/fDroid/debug/*.apk" # Ruta mejorada para encontrar el archivo
