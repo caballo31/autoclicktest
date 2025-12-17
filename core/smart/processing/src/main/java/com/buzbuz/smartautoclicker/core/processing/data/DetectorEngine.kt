@@ -339,6 +339,7 @@ class DetectorEngine @Inject constructor(
         while (processingJob?.isActive == true) {
             displayRecorder.acquireLatestBitmap()?.let { screenFrame ->
                 scenarioProcessor?.process(screenFrame)
+                delay(1000)
             } ?: delay(NO_IMAGE_DELAY_MS)
         }
     }
