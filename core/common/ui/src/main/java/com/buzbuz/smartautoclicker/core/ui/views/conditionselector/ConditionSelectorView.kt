@@ -133,8 +133,8 @@ class ConditionSelectorView(
         selectorValidityTempValue.set(RectF(selector.selectedArea))
 
         val isSelectorOverCapture = selectorValidityTempValue.intersect(capture.captureArea)
-        val isBiggerThanMinimumSize = selectorValidityTempValue.width() >= CAPTURE_MINIMUM_SIZE
-                && selectorValidityTempValue.height() >= CAPTURE_MINIMUM_SIZE
+        val isBiggerThanMinimumSize = selectorValidityTempValue.width() >= MIN_SELECTION_SIZE
+            && selectorValidityTempValue.height() >= MIN_SELECTION_SIZE
 
         if ((isSelectorOverCapture && isBiggerThanMinimumSize) != isSelectorValid) {
             isSelectorValid = !isSelectorValid
@@ -218,8 +218,7 @@ class ConditionSelectorView(
 }
 
 /**
- * The minimum size of the capture.
- * Final results will not always be the size, as it is relative to the capture viewport, but we just don't want a
- * null result.
+ * The minimum size of the capture in pixels.
+ * Final results might be larger once mapped to the viewport, this just prevents empty selections.
  */
-private const val CAPTURE_MINIMUM_SIZE = 50f
+private const val MIN_SELECTION_SIZE = 1f

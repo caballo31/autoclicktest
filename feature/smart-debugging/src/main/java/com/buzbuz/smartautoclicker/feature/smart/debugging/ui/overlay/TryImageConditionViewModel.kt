@@ -148,4 +148,4 @@ private data class TriedImageCondition(
 /** The minimum threshold value selectable by the user. */
 const val MIN_THRESHOLD = 0f
 /** The maximum threshold value selectable by the user. */
-const val MAX_THRESHOLD = 20f
+const val MAX_THRESHOLD = 100f
