@@ -2,10 +2,10 @@ name: Compile Android APK
 
 on:
   push:
-    branches: [ "main" ]    # Se activa al subir cambios a main
+    branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]    # Se activa en PRs a main
-  workflow_dispatch:        # <--- ESTO activa el botón "Run workflow" manual
+    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -14,10 +14,10 @@ jobs:
       - name: Checkout del codigo
         uses: actions/checkout@v4
 
-      - name: Configurar Java 17
+      - name: Configurar Java 21 # <--- CAMBIADO DE 17 A 21
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '21'   # <--- CAMBIADO DE 17 A 21
           distribution: 'temurin'
           cache: gradle
 
@@ -31,4 +31,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: SmartAutoClicker-Debug-APK
-          path: "**/build/outputs/apk/fDroid/debug/*.apk" # Ruta mejorada para encontrar el archivo
+          path: "**/build/outputs/apk/fDroid/debug/*.apk"
